@@ -19,9 +19,9 @@ namespace GCFinalProject.Controllers
             return View();
         }
         [HttpGet("GetClassByName/{name}")]
-        public string GetClassByName(string name)
+        public DnD GetClassByName(string name)
         {
-            return dal.CallAPI(name);
+            return dal.getClass(name);
         }
 
 

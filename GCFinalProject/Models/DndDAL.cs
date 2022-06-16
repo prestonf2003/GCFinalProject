@@ -17,10 +17,10 @@ namespace GCFinalProject.Models
 
             return JSON;
         }
-        public string getClass(DnD d)
+        public DnD getClass(string d)
         {
-            string result = CallAPI(d.index);
-            string dnd = JsonConvert.DeserializeObject<string>(result);
+            string result = CallAPI(d);
+            DnD dnd = JsonConvert.DeserializeObject<DnD>(result);
 
             return dnd;
         }

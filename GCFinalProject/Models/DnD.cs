@@ -8,7 +8,7 @@
                 public string class_levels { get; set; }
                 public int hit_die { get; set; }
                 public string index { get; set; }
-                public Multi_Classing multi_classing { get; set; }
+               
                 public string name { get; set; }
                 public Proficiency1[] proficiencies { get; set; }
                 public Proficiency_Choices[] proficiency_choices { get; set; }
@@ -19,12 +19,7 @@
                 public string url { get; set; }
             
 
-            public class Multi_Classing
-            {
-                public Prerequisite[] prerequisites { get; set; }
-                public Proficiency[] proficiencies { get; set; }
-                public object[] proficiency_choices { get; set; }
-            }
+        
 
             public class Prerequisite
             {
