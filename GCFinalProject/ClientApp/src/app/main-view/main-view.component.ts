@@ -23,7 +23,8 @@ wisdom: number = 0;
 charisma: number = 0;
 id: number = 0;
 
-newUser: User = new User(0, "");
+userId: string = "";
+
   constructor(public charService: CharacterService, public dndService: DndService, private router: Router) { 
     this.showAllCharacters();
 
@@ -36,8 +37,14 @@ newUser: User = new User(0, "");
 
     this.charService.createCharacter(newCharacter).subscribe();
   }
+  createUser(): void {
+    let newUser: User = new User(undefined!, this.userId);
+    this.charService.createUser(newUser).subscribe();
+  }
 
   ngOnInit(): void {
+    this.currentUser = this.charService.currentUser;
+    this.userId = "";
   }
 
 }

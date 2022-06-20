@@ -45,6 +45,9 @@ requestOptions: Object = {
   deleteUser(id: number): Observable <User> {
     return this.http.delete<User>(this.urlRoot + "user/DeleteUser" + id, this.requestOptions);
   }
-
+  login(userId: string): void {
+    userId = userId.toLocaleLowerCase();
+    this.currentUser = userId[0].toUpperCase() + userId.slice(1);
+  }
 
 }

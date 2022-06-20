@@ -40,6 +40,7 @@ namespace GCFinalProject.Controllers
             c.Wisdom = updatedCharacter.Wisdom;
             c.Charisma = updatedCharacter.Charisma;
             c.Id = updatedCharacter.Id;
+            return $"Character at Id {c.PkId} has been updated.";
 
         }
         [HttpDelete("DeleteCharacter/{id}")]

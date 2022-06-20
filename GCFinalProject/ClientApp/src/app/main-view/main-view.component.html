@@ -1,1 +1,6 @@
-<p>main-view works!</p>
+<div *ngIf="currentUser === ''">
+
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId">
+    <button (click)="charService.login(userId); ngOnInit(); createUser(); ">Login</button>
+
+</div>
