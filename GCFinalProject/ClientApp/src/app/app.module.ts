@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ShowclassComponent } from './showclass/showclass.component';
+import { MainViewComponent } from './main-view/main-view.component';
 
 @NgModule({
   declarations: [
@@ -18,17 +19,19 @@ import { ShowclassComponent } from './showclass/showclass.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ShowclassComponent
+    ShowclassComponent,
+    MainViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: MainViewComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      {path: 'showclass', component: ShowclassComponent}
+      {path: 'showclass', component: ShowclassComponent},
+      
     ])
   ],
   providers: [],
