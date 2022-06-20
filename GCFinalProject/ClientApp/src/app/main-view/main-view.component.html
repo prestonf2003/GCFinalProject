@@ -1,6 +1,15 @@
 <div *ngIf="currentUser === ''">
+  <input
+    type="text"
+    id="username"
+    placeholder="Username"
+    [(ngModel)]="userId"
+  />
+  <button (click)="charService.login(userId); createUser(); ngOnInit()">
+    Login
+  </button>
+</div>
 
-    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId">
-    <button (click)="charService.login(userId); createUser(); ngOnInit();">Login</button>
-
+<div *ngFor="let character of allCharacters">
+  {{ character.Class }}
 </div>
