@@ -1,26 +1,17 @@
 <div>
-  <label for="classes">Select a class:</label>
+    <label for="classes">Select a class:</label>
 
-  <select name="class" [(ngModel)]="search">
-    <option value="barbarian">Barbarian</option>
-    <option value="bard">Bard</option>
-    <option value="cleric">Cleric</option>
-    <option value="druid">Druid</option>
-    <option value="fighter">Fighter</option>
-    <option value="monk">Monk</option>
-    <option value="paladin">Paladin</option>
-    <option value="ranger">Ranger</option>
-    <option value="rogue">Rogue</option>
-    <option value="sorcerer">Sorcerer</option>
-    <option value="warlock">Warlock</option>
-    <option value="wizard">Wizard</option>
+    <select [(ngModel)]="search">
+    <option value="default">----</option>
+    <option *ngFor="let character of characters">{{character}}</option>
+
   </select>
 
-  <p>Name: {{ name.index }}</p>
-  <p>Sub Class: {{ name.subclasses[0].name }}</p>
+    <p>Name: {{ search }}</p>
 
-  <p *ngIf="search === 'barbarian'">
-    The straight forward heavy hitter. Uses large weapons to attack and is
-    extremely durable.
-  </p>
+
+    <div *ngIf="search === 'Barbarian'">
+        <p>SubClass: {{subclasses[1]}}</p>
+        <p> The straight forward heavy hitter. Uses large weapons to attack and is extremely durable.</p>
+    </div>
 </div>
