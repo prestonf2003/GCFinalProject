@@ -1,6 +1,6 @@
 export class Character{
 pkId: number;
-Class: string;
+class: string;
 subclass: string;
 strength: number;
 dexterity: number;
@@ -12,7 +12,7 @@ id: number;
 
 constructor(pkId: number, Class: string, subclass: string, strength: number, dexterity: number, constitution: number, intelligence: number,wisdom: number, charisma: number, id: number){
 this.pkId = pkId;
-this.Class = Class;
+this.class = Class;
 this.subclass = subclass;
 this.strength = strength;
 this.dexterity = dexterity;

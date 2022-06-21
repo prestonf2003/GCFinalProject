@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GCFinalProject.Models;
+using System.Linq;
 
 namespace GCFinalProject.Controllers
 {
@@ -39,6 +40,21 @@ namespace GCFinalProject.Controllers
             db.SaveChanges();
             return $"User with username {u.UserName} has been deleted";
 
+        }
+        [HttpGet("login")]
+        public void login(string userId)
+        {
+            try
+            {
+                User u = db.Users.Find(userId);
+            }
+            catch(Exception ex)
+            {
+                User u = new User();
+                u.UserName = userId;
+                
+                db.Users.Add(u);
+            }
         }
 
     }

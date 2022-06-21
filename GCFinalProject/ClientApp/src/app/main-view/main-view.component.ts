@@ -30,12 +30,11 @@ export class MainViewComponent implements OnInit {
     public dndService: DndService,
     private router: Router
   ) {
-    this.showAllCharacters();
-  }
-  showAllCharacters(): void {
-    this.charService.showAllCharacters().subscribe((Characters) => {
-      this.allCharacters = Characters;
-    });
+    this.charService.showAllCharacters().subscribe((result) => {
+      this.allCharacters = result;
+    console.log(this.allCharacters);
+  });
+
   }
   createCharacter(): void {
     let newCharacter: Character = new Character(
@@ -56,6 +55,10 @@ export class MainViewComponent implements OnInit {
   createUser(): void {
     let newUser: User = new User(undefined!, this.userId);
     this.charService.createUser(newUser).subscribe();
+  }
+  login(): void {
+    this.charService.login(this.userId);
+
   }
 
   ngOnInit(): void {

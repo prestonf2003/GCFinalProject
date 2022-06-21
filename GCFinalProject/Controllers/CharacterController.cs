@@ -19,6 +19,11 @@ namespace GCFinalProject.Controllers
         {
             return db.Characters.Where(t => t.Id == id).First();
         }
+        [HttpGet("GetCharacterByClass/{name}")]
+        public Character GetCharacterByName(string name)
+        {
+            return db.Characters.Where(t => t.Class == name).First(); 
+        }
         [HttpPut("CreateNewCharacter")]
         public string CreateCharacter(Character c)
         {

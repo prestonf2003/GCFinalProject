@@ -24,7 +24,7 @@ namespace GCFinalProject.Mode
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=DnD;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=DnD;Trusted_Connection=True;");
             }
         }
 
@@ -33,7 +33,7 @@ namespace GCFinalProject.Mode
             modelBuilder.Entity<Character>(entity =>
             {
                 entity.HasKey(e => e.PkId)
-                    .HasName("PK__Characte__40A359C3CF716943");
+                    .HasName("PK__Characte__40A359C35D3644FD");
 
                 entity.ToTable("Character");
 
@@ -46,11 +46,14 @@ namespace GCFinalProject.Mode
                 entity.HasOne(d => d.IdNavigation)
                     .WithMany(p => p.Characters)
                     .HasForeignKey(d => d.Id)
-                    .HasConstraintName("FK__Character__Id__38996AB5");
+                    .HasConstraintName("FK__Character__Id__4CA06362");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasIndex(e => e.UserName, "UQ__Users__C9F28456AACA693B")
+                    .IsUnique();
+
                 entity.Property(e => e.UserName).HasMaxLength(25);
             });
 

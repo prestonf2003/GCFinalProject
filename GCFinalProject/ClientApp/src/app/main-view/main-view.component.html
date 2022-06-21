@@ -1,15 +1,11 @@
 <div *ngIf="currentUser === ''">
-  <input
-    type="text"
-    id="username"
-    placeholder="Username"
-    [(ngModel)]="userId"
-  />
-  <button (click)="charService.login(userId); createUser(); ngOnInit()">
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">
     Login
   </button>
 </div>
 
-<div *ngFor="let character of allCharacters">
-  {{ character.Class }}
+<div *ngFor="let c of allCharacters">
+    <p>Class: {{c.class}} SubClass: {{c.subclass}}</p>
+
 </div>

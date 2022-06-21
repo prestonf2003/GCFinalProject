@@ -1,6 +1,6 @@
 <div>
     <form>
-        <input type="text" name="name" placeholder="Class Name" [(ngModel)]="search">
+        <input type="text" name="name" placeholder="Class Name" [(ngModel)]="search" style="text-transform:lowercase">
 
     </form>
     <button (click)="GetClassByName(search)">Get Class</button>

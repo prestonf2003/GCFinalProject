@@ -9,13 +9,14 @@ import {DndService} from '../dnd.service';
   styleUrls: ['./showclass.component.css']
 })
 export class ShowclassComponent implements OnInit {
-  search: string = "";
+  search: string = "".toLowerCase();
 
  name: DnD = new DnD("", 0, "", "", [], [], [], [], [], [], "");
 
 
   constructor(public dnd: DndService) {
-    this.GetClassByName(this.search);
+    this.GetClassByName(this.search.toLowerCase());
+    console.log(this.search)
    }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class ShowclassComponent implements OnInit {
   GetClassByName(name: string): void{
     this.dnd.GetClassByName(name).subscribe((response) => {
      this.name = response;
-      console.log(response);
+     
     })
 
     

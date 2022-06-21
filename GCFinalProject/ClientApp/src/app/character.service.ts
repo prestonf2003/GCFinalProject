@@ -46,6 +46,7 @@ requestOptions: Object = {
     return this.http.delete<User>(this.urlRoot + "user/DeleteUser" + id, this.requestOptions);
   }
   login(userId: string): void {
+     this.http.get(this.urlRoot + "user/login" + userId, this.requestOptions)
     userId = userId.toLocaleLowerCase();
     this.currentUser = userId[0].toUpperCase() + userId.slice(1);
   }
