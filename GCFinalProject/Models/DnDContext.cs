@@ -17,6 +17,7 @@ namespace GCFinalProject.Models
         }
 
         public virtual DbSet<Character> Characters { get; set; } = null!;
+        public virtual DbSet<Favorite> Favorites { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,7 +34,7 @@ namespace GCFinalProject.Models
             modelBuilder.Entity<Character>(entity =>
             {
                 entity.HasKey(e => e.PkId)
-                    .HasName("PK__Characte__40A359C3D301AFBA");
+                    .HasName("PK__Characte__40A359C306DEA5A2");
 
                 entity.ToTable("Character");
 
@@ -42,11 +43,26 @@ namespace GCFinalProject.Models
                 entity.Property(e => e.Class).HasMaxLength(40);
 
                 entity.Property(e => e.Subclass).HasMaxLength(40);
+            });
+
+            modelBuilder.Entity<Favorite>(entity =>
+            {
+                entity.HasKey(e => e.PkId)
+                    .HasName("PK__Favorite__40A359C321367FF2");
+
+                entity.Property(e => e.PkId).HasColumnName("pkId");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.UserId)
+                    .HasMaxLength(40)
+                    .HasColumnName("UserID");
 
                 entity.HasOne(d => d.IdNavigation)
-                    .WithMany(p => p.Characters)
+                    .WithMany(p => p.Favorites)
                     .HasForeignKey(d => d.Id)
-                    .HasConstraintName("FK__Character__Id__38996AB5");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Favorites__id__66603565");
             });
 
             modelBuilder.Entity<User>(entity =>

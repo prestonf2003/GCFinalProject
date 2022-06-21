@@ -24,6 +24,9 @@ requestOptions: Object = {
    getCharacterById(id: number): Observable <Character> {
     return this.http.get<Character>(this.urlRoot + "character/GetCharacterById/" + id);
    }
+   getCharacterByName(name: string): Observable <Character> {
+  return this.http.get<Character>(this.urlRoot + "character/GetCharacterByName/" + name);
+  }
    createCharacter(c: Character): Observable <Character> {
     return this.http.put<Character>(this.urlRoot + "character/CreateCharacter/", c, this.requestOptions);
 }
@@ -50,5 +53,7 @@ requestOptions: Object = {
     userId = userId.toLocaleLowerCase();
     this.currentUser = userId[0].toUpperCase() + userId.slice(1);
   }
-
+  logout(): void {
+    this.currentUser = "";
+  }
 }

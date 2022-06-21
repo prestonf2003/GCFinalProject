@@ -1,9 +1,3 @@
-<div>
-    <form>
-        <input type="text" name="name" placeholder="Class Name" [(ngModel)]="search" style="text-transform:lowercase">
-
-    </form>
-    <button (click)="GetClassByName(search)">Get Class</button>
-    <p>Name: {{name.index}}</p>
-    <p>Sub Class: {{name.subclasses[0].name}}</p>
+<div *ngFor="let character of characters; index as i">
+    {{character}} {{subclasses[i]}}
 </div>

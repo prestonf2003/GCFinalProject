@@ -4,8 +4,21 @@
     Login
   </button>
 </div>
+<span *ngIf="currentUser !== ''">
+  <br>
+  Logged in as: {{currentUser}}
+  <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>    
+  <br>
 
-<div *ngFor="let c of allCharacters">
-    <p>Class: {{c.class}} SubClass: {{c.subclass}}</p>
 
+  <br>
+</span>
+<div *ngIf="currentUser !== ''">
+    <div *ngFor="let c of allCharacters">
+        <p>Class: {{c.class}} SubClass: {{c.subclass}}</p>
+
+
+        <button class="buttonStyle" *ngIf="currentUser !== '' && !isFavorited(c.pkId)" (click)="createFavorite(c.pkId)">Favorite</button>
+        <button class="buttonStyle" *ngIf="currentUser !== '' && isFavorited(c.pkId)" (click)="deleteFavorite(c.pkId)">Remove from favorites</button>
+    </div>
 </div>

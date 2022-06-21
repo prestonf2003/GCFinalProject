@@ -17,7 +17,7 @@ namespace GCFinalProject.Controllers
         [HttpGet("GetCharacterById/{id}")]
         public Character GetCharacterById(int id)
         {
-            return db.Characters.Where(t => t.Id == id).First();
+            return db.Characters.Where(t => t.PkId == id).First();
         }
         [HttpGet("GetCharacterByClass/{name}")]
         public Character GetCharacterByName(string name)
@@ -35,7 +35,7 @@ namespace GCFinalProject.Controllers
         public string UpdateCharacter(int id, Character updatedCharacter)
         {
             Character c = db.Characters.Find(id);
-            c.PkId = updatedCharacter.PkId;
+           
             c.Class = updatedCharacter.Class;
             c.Subclass = updatedCharacter.Subclass;
             c.Strength = updatedCharacter.Strength;
@@ -44,7 +44,7 @@ namespace GCFinalProject.Controllers
             c.Intelligence = updatedCharacter.Intelligence;
             c.Wisdom = updatedCharacter.Wisdom;
             c.Charisma = updatedCharacter.Charisma;
-            c.Id = updatedCharacter.Id;
+            
             return $"Character at Id {c.PkId} has been updated.";
 
         }

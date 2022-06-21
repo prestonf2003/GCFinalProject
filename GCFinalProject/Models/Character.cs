@@ -5,6 +5,11 @@ namespace GCFinalProject.Models
 {
     public partial class Character
     {
+        public Character()
+        {
+            Favorites = new HashSet<Favorite>();
+        }
+
         public int PkId { get; set; }
         public string? Class { get; set; }
         public string? Subclass { get; set; }
@@ -14,8 +19,7 @@ namespace GCFinalProject.Models
         public int? Intelligence { get; set; }
         public int? Wisdom { get; set; }
         public int? Charisma { get; set; }
-        public int? Id { get; set; }
 
-        public virtual User? IdNavigation { get; set; }
+        public virtual ICollection<Favorite> Favorites { get; set; }
     }
 }

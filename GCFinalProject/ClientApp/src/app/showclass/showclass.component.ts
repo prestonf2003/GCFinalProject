@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DnD} from '../dnd';
 import {DndService} from '../dnd.service';
+import {Result} from '../classes';
 
 
 @Component({
@@ -12,13 +13,19 @@ export class ShowclassComponent implements OnInit {
   search: string = "".toLowerCase();
 
  name: DnD = new DnD("", 0, "", "", [], [], [], [], [], [], "");
+ characters: string[] = [];
+ subclasses: string[] = [];
 
 
   constructor(public dnd: DndService) {
-    this.GetClassByName(this.search.toLowerCase());
-    console.log(this.search)
-   }
-
+    this.dnd.GetAll().subscribe((response) => {
+      this.characters = response;
+      console.log(this.characters);
+    });
+    this.dnd.GetSubclasses().subscribe((response) => {
+      this.subclasses = response;
+   });
+  }
   ngOnInit(): void {
   }
   GetClassByName(name: string): void{
@@ -27,7 +34,9 @@ export class ShowclassComponent implements OnInit {
      
     })
 
+
     
   }
+
 
 }

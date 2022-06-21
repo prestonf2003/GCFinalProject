@@ -9,7 +9,9 @@ const PROXY_CONFIG = [
       "/weatherforecast",
       "/dnd",
       "/user",
-      "/character"
+      "/character",
+      "/favorite"
+
    ],
     target: target,
     secure: false,

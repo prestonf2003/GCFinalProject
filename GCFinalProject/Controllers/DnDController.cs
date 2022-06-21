@@ -14,15 +14,21 @@ namespace GCFinalProject.Controllers
     {
         DndDAL dal = new DndDAL();
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+
         [HttpGet("GetClassByName/{name}")]
         public DnD GetClassByName(string name)
         {
             return dal.getClass(name);
         }
+        [HttpGet("GetAll")]
+        public List<string> GetAll()
+        {
+            return dal.getClasses();
+        }
+        [HttpGet("GetSubclasses")]
+        public List<string> GetSubclasses(){
+            return dal.getSubClasses();
+}
 
 
     }
