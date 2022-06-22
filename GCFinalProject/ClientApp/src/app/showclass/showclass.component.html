@@ -1,12 +1,12 @@
-<div>
-    <label for="classes">Select a class:</label>
-
+<div class="info">
+    <label for="classes">Select a class by name to learn more.</label>
+    <br />
     <select [(ngModel)]="search">
-    <option value="default">----</option>
-    <option *ngFor="let character of characters">{{ character }}</option>
-  </select>
+        <option value="default">__________</option>
+        <option *ngFor="let character of characters">{{ character }}</option>
+    </select>
 
-    <p>Name: {{ search }}</p>
+
 
     <div *ngIf="search === 'Barbarian'">
         <p>SubClass: {{ subclasses[0] }}</p>
@@ -28,7 +28,8 @@
     <div *ngIf="search === 'Druid'">
         <p>SubClass: {{ subclasses[7] }}</p>
         <p>
-            An environmental caster who uses the land to help or harm. They also have the ability to shapeshift into animals for combat and mobility.
+            An environmental caster who uses the land to help or harm. They also have the ability to shapeshift into
+            animals for combat and mobility.
         </p>
     </div>
     <div *ngIf="search === 'Fighter'">
@@ -58,7 +59,8 @@
     <div *ngIf="search === 'Rogue'">
         <p>SubClass: {{ subclasses[11] }}</p>
         <p>
-            Masters of stealth, stealing, and trickery, they are hard to pin down and love attacking those with their guards down.
+            Masters of stealth, stealing, and trickery, they are hard to pin down and love attacking those with their
+            guards down.
         </p>
     </div>
     <div *ngIf="search === 'Sorcerer'">
@@ -74,7 +76,8 @@
     <div *ngIf="search === 'Wizard'">
         <p>SubClass: {{ subclasses[4] }}</p>
         <p>
-            Students of magic that study an extremely large variety of spells and able to turn any situation in their favor.
+            Students of magic that study an extremely large variety of spells and able to turn any situation in their
+            favor.
         </p>
     </div>
 </div>
