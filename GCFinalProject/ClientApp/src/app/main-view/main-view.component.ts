@@ -4,7 +4,6 @@ import { User } from '../user';
 import { CharacterService } from '../character.service';
 import { DndService } from '../dnd.service';
 import { Router } from '@angular/router';
-import { tick } from '@angular/core/testing';
 import { Favorite } from '../favorite';
 @Component({
   selector: 'app-main-view',

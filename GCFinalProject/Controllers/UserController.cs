@@ -54,6 +54,7 @@ namespace GCFinalProject.Controllers
                 u.UserName = userId;
                 
                 db.Users.Add(u);
+                db.SaveChanges();
             }
         }
 

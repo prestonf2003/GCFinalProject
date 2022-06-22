@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DnD} from '../dnd';
 import {DndService} from '../dnd.service';
-import {Result} from '../classes';
-import { BreadcrumbModule } from 'ng-uikit-pro-standard';
+
+
 
 
 @Component({
@@ -30,7 +30,7 @@ export class ShowclassComponent implements OnInit {
    });
   }
   ngOnInit(): void {
-    this.DifferentClass();
+   // this.DifferentClass();
   }
   GetClassByName(name: string): void{
     this.dnd.GetClassByName(name).subscribe((response) => {
