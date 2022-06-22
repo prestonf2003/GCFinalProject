@@ -24,8 +24,11 @@ requestOptions: Object = {
    getCharacterById(id: number): Observable <Character> {
     return this.http.get<Character>(this.urlRoot + "character/GetCharacterById/" + id);
    }
-   getCharacterByName(name: string): Observable <Character> {
-  return this.http.get<Character>(this.urlRoot + "character/GetCharacterByName/" + name);
+   GetCharacterByName(name: string): Observable <Character[]> {
+    if(name === ""){
+      return this.showAllCharacters();
+    }
+  return this.http.get<Character[]>(this.urlRoot + "character/GetCharacterByName/" + name);
   }
    createCharacter(c: Character): Observable <Character> {
     return this.http.put<Character>(this.urlRoot + "character/CreateCharacter/", c, this.requestOptions);

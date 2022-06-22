@@ -14,6 +14,7 @@ export class MainViewComponent implements OnInit {
   currentUser = this.charService.currentUser;
   allCharacters: Character[] = [];
   favorites: Favorite[] = [];
+  searchedCharacters: Character[] = [];
   newFavorite: Favorite = new Favorite(-1, "user here", -1);
   Class: string = '';
   Subclass: string = '';
@@ -23,15 +24,17 @@ export class MainViewComponent implements OnInit {
   intelligence: number = 0;
   wisdom: number = 0;
   charisma: number = 0;
-
+  name: string = "";
+  pog: number[] = [];
+  favorited: Character[] = [];
 
   userId: string = '';
 
   constructor(public charService: CharacterService, public dndService: DndService, private router: Router) 
   {
     this.charService.showAllCharacters().subscribe((result) => {
-      this.allCharacters = result;
-      console.log(this.allCharacters);
+      this.searchedCharacters = result;
+      console.log(this.searchedCharacters);
     });
     this.showAllFavorites();
   }
@@ -56,8 +59,8 @@ export class MainViewComponent implements OnInit {
     this.charService.createUser(newUser).subscribe();
   }
   showAllFavorites(): void {
-    this.dndService.showFavorites().subscribe((allTickets) => {
-      this.favorites = allTickets;
+    this.dndService.showFavorites().subscribe((allFavorites) => {
+      this.favorites = allFavorites;
     });
   }
   createFavorite(characterId: number): void{
@@ -81,6 +84,30 @@ export class MainViewComponent implements OnInit {
     }
 return false;
   }
+
+  searchForFavorites(): void {
+    let newSearched: Character[] = [];
+
+    newSearched = this.searchedCharacters.filter(character => 
+      this.isFavorited(character.pkId),
+      
+    );
+    console.log(newSearched)
+    this.searchedCharacters = newSearched;
+  }
+  GetCharacterByName(name: string){
+   let searchByFaves: any = document.getElementById("favSearchCheckBox") ?? false;
+   this.charService.GetCharacterByName(name).subscribe((response) => {
+    this.searchedCharacters = response;
+    console.log(name);
+    if(searchByFaves.checked){
+      this.searchForFavorites();
+
+    }
+   })
+  }
+  
+
 
 
   login(): void {

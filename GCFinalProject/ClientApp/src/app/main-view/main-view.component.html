@@ -1,3 +1,15 @@
+<script>
+    function myFunction() {
+        var checkBox = document.getElementById("favSearchCheckBox");
+        var text = document.getElementById("stats");
+        console.log(text);
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+</script>
 <div *ngIf="currentUser === ''">
     <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
     <button (click)="charService.login(userId); ngOnInit()">
@@ -9,14 +21,16 @@
   Logged in as: {{currentUser}}
   <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>    
   <br>
-
+     
 
   <br>
 </span>
 <div *ngIf="currentUser !== ''">
-    <div *ngFor="let c of allCharacters">
-        <p>Class: {{c.class}} SubClass: {{c.subclass}}</p>
+    <label>Show only favorites: <input type="checkbox" id="favSearchCheckBox" value="favoritesOnly" (click)="GetCharacterByName(name)" onclick="myFunction()">favoritesOnly</label>
 
+    <div *ngFor="let c of searchedCharacters">
+        <p>Class: {{c.class}} SubClass: {{c.subclass}}</p>
+        <p id="stats" style="display:none">{{c.charisma}}</p>
 
         <button class="buttonStyle" *ngIf="currentUser !== '' && !isFavorited(c.pkId)" (click)="createFavorite(c.pkId)">Favorite</button>
         <button class="buttonStyle" *ngIf="currentUser !== '' && isFavorited(c.pkId)" (click)="deleteFavorite(c.pkId)">Remove from favorites</button>
