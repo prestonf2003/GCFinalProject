@@ -30,8 +30,8 @@ import { MainViewComponent } from './main-view/main-view.component';
       { path: '', component: MainViewComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      {path: 'showclass', component: ShowclassComponent},
-      
+      { path: 'showclass', component: ShowclassComponent },
+
     ])
   ],
   providers: [],
