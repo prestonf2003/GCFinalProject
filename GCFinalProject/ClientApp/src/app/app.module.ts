@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ShowclassComponent } from './showclass/showclass.component';
 import { MainViewComponent } from './main-view/main-view.component';
+import { CreateCharacterComponent } from './create-character/create-character.component';
+import { ViewPresetComponent } from './view-preset/view-preset.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { MainViewComponent } from './main-view/main-view.component';
     CounterComponent,
     FetchDataComponent,
     ShowclassComponent,
-    MainViewComponent
+    MainViewComponent,
+    CreateCharacterComponent,
+    ViewPresetComponent
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +36,8 @@ import { MainViewComponent } from './main-view/main-view.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'showclass', component: ShowclassComponent },
+      {path: 'create-character', component: CreateCharacterComponent},
+      {path: 'view-preset', component: ViewPresetComponent}
 
     ])
   ],

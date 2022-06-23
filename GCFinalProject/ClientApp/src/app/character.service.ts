@@ -15,6 +15,7 @@ requestOptions: Object = {
   headers: this.headers,
   responseType: 'text'
 };
+character!: Character;
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.urlRoot = baseUrl;
    }
@@ -31,7 +32,7 @@ requestOptions: Object = {
   return this.http.get<Character[]>(this.urlRoot + "character/GetCharacterByName/" + name);
   }
    createCharacter(c: Character): Observable <Character> {
-    return this.http.put<Character>(this.urlRoot + "character/CreateCharacter/", c, this.requestOptions);
+    return this.http.put<Character>(this.urlRoot + "character/CreateNewCharacter/", c, this.requestOptions);
 }
   updateCharacter(id: number, c: Character): Observable <Character> {
     return this.http.post<Character>(this.urlRoot + "character/UpdateCharacter/" + id, c , this.requestOptions);

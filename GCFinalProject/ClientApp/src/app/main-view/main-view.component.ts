@@ -28,7 +28,7 @@ export class MainViewComponent implements OnInit {
   pog: number[] = [];
   favorited: Character[] = [];
 
-  userId: string = '';
+  userId: string = "";
 
   constructor(public charService: CharacterService, public dndService: DndService, private router: Router) 
   {
@@ -39,20 +39,10 @@ export class MainViewComponent implements OnInit {
     this.showAllFavorites();
   }
   createCharacter(): void {
-    let newCharacter: Character = new Character(
-      undefined!,
-      this.Class,
-      this.Subclass,
-      this.strength,
-      this.dexterity,
-      this.constitution,
-      this.intelligence,
-      this.wisdom,
-      this.charisma,
-      
-    );
+this.router.navigateByUrl(`/create-character`);
+    
 
-    this.charService.createCharacter(newCharacter).subscribe();
+    
   }
   createUser(): void {
     let newUser: User = new User(undefined!, this.userId);
@@ -85,6 +75,7 @@ export class MainViewComponent implements OnInit {
 return false;
   }
 
+
   searchForFavorites(): void {
     let newSearched: Character[] = [];
 
@@ -104,9 +95,20 @@ return false;
       this.searchForFavorites();
 
     }
+
    })
   }
   
+  deleteCharacter(id: number){
+    let toDelete: Character = this.searchedCharacters.find(character => character.pkId == id)!;
+    this.charService.deleteCharacter(id).subscribe(() => {
+      this.searchedCharacters.splice(this.searchedCharacters.indexOf(toDelete), 1);
+    })
+  }
+  updateCharacter(character: Character){
+    this.charService.character = character;
+    this.router.navigateByUrl(`/view-preset`)
+  }
 
 
 

@@ -44,6 +44,9 @@ namespace GCFinalProject.Controllers
             c.Intelligence = updatedCharacter.Intelligence;
             c.Wisdom = updatedCharacter.Wisdom;
             c.Charisma = updatedCharacter.Charisma;
+
+            db.Characters.Update(c);
+            db.SaveChanges();
             
             return $"Character at Id {c.PkId} has been updated.";
 
