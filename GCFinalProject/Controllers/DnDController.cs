@@ -30,6 +30,17 @@ namespace GCFinalProject.Controllers
             return dal.getSubClasses();
 }
 
-
+        [HttpGet("GetSpells")]
+        public List<string> GetSpells()
+        {
+            return dal.getSpells();
+        }
+        [HttpGet("SearchSpells/{name}")]
+        public List<string> SearchSpells(string name)
+        {
+            return dal.SearchSpells(name);
+            
+        }
     }
+
 }

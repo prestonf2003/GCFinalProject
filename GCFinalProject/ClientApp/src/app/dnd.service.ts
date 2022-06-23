@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DnD } from './dnd';
 import { Favorite } from './favorite';
 import { Result } from './classes';
+import {Spells} from './spells';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,12 @@ export class DndService {
   GetAll(): Observable<string[]>{
     return this.http.get<string[]>(this.urlRoot + "dnd/GetAll/");
 
+  }
+  getSpells(): Observable<string[]>{
+    return this.http.get<string[]>(this.urlRoot + "dnd/GetSpells/");
+  }
+  SearchSpells(name: string): Observable<string[]>{
+    return this.http.get<string[]>(this.urlRoot + "dnd/SearchSpells/" + name);
   }
   GetSubclasses(): Observable<string[]>{
     return this.http.get<string[]>(this.urlRoot + "dnd/Getsubclasses/");

@@ -13,6 +13,7 @@ import { ShowclassComponent } from './showclass/showclass.component';
 import { MainViewComponent } from './main-view/main-view.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { ViewPresetComponent } from './view-preset/view-preset.component';
+import { SpellListComponent } from './spell-list/spell-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ViewPresetComponent } from './view-preset/view-preset.component';
     ShowclassComponent,
     MainViewComponent,
     CreateCharacterComponent,
-    ViewPresetComponent
+    ViewPresetComponent,
+    SpellListComponent
     
   ],
   imports: [
@@ -37,7 +39,8 @@ import { ViewPresetComponent } from './view-preset/view-preset.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'showclass', component: ShowclassComponent },
       {path: 'create-character', component: CreateCharacterComponent},
-      {path: 'view-preset', component: ViewPresetComponent}
+      {path: 'view-preset', component: ViewPresetComponent},
+      {path: 'spell-list', component: SpellListComponent}
 
     ])
   ],

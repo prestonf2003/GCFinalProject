@@ -71,8 +71,8 @@
                 <br>
                 <input type="number" max="20" [(ngModel)]="charisma" placeholder="Charisma">
                 <br>
-                <button class="buttonStyle" *ngIf="class.trim() === '' || subclass.trim() === ''" disabled>Update ticket</button>
-                <button class="buttonStyle" *ngIf="class.trim() !== '' || subclass.trim() !== ''" (click)="updateCharacter(focusCharacter.pkId, focusCharacter)">Update ticket</button>
+                <button class="buttonStyle" *ngIf="class.trim() === '' || subclass.trim() === ''" disabled>Update Character</button>
+                <button class="buttonStyle" *ngIf="class.trim() !== '' || subclass.trim() !== ''" (click)="updateCharacter(focusCharacter.pkId, focusCharacter)">Update Character</button>
                 <p></p>
             </div>
         </div>

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Favorite {\n  constructor(pkId, userId, id) {\n    this.pkId = pkId;\n    this.userId = userId;\n    this.id = id;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

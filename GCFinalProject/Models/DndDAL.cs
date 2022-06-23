@@ -6,7 +6,7 @@ namespace GCFinalProject.Models
 {
     public class DndDAL
     {
-
+        
         public string CallAPI(string Class)
         {
             string url = $"https://www.dnd5eapi.co/api/classes/{Class}";
@@ -60,6 +60,34 @@ namespace GCFinalProject.Models
                 subclasses.Add(subclass);
             }
             return subclasses;
+        }
+        public List<string> getSpells()
+        {
+            string result = CallEndpoint("spells");
+            Rootobject r = JsonConvert.DeserializeObject<Rootobject>(result);
+            List<string> spells = new List<string>();
+            for (int i = 0; i < 319; i++)
+            {
+                string spell = r.results[i].name;
+                spells.Add(spell);
+            }
+            return spells;
+        }
+        public List<string> SearchSpells(string spell)
+        {
+            string result = CallEndpoint("spells");
+            Rootobject r = JsonConvert.DeserializeObject<Rootobject>(result);
+            List<string> spells = new List<string>();
+            for (int i = 0; i < 319; i++)
+            {
+                string spellName = r.results[i].name;
+                spells.Add(spellName);
+            }
+            
+            List<string> searched = spells.Where(s => s.Contains(spell)).ToList();
+            return searched;
+      
+
         }
     }
 }
