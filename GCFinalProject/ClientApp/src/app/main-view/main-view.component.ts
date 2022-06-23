@@ -14,6 +14,7 @@ export class MainViewComponent implements OnInit {
   currentUser = this.charService.currentUser;
   allCharacters: Character[] = [];
   favorites: Favorite[] = [];
+  searchedCharacters: Character[] = [];
   newFavorite: Favorite = new Favorite(-1, "user here", -1);
   Class: string = '';
   Subclass: string = '';
@@ -23,41 +24,33 @@ export class MainViewComponent implements OnInit {
   intelligence: number = 0;
   wisdom: number = 0;
   charisma: number = 0;
+  name: string = "";
+  pog: number[] = [];
+  favorited: Character[] = [];
 
-
-  userId: string = '';
+  userId: string = "";
 
   constructor(public charService: CharacterService, public dndService: DndService, private router: Router) 
   {
     this.charService.showAllCharacters().subscribe((result) => {
-      this.allCharacters = result;
-      console.log(this.allCharacters);
+      this.searchedCharacters = result;
+      console.log(this.searchedCharacters);
     });
     this.showAllFavorites();
   }
   createCharacter(): void {
-    let newCharacter: Character = new Character(
-      undefined!,
-      this.Class,
-      this.Subclass,
-      this.strength,
-      this.dexterity,
-      this.constitution,
-      this.intelligence,
-      this.wisdom,
-      this.charisma,
-      
-    );
+this.router.navigateByUrl(`/create-character`);
+    
 
-    this.charService.createCharacter(newCharacter).subscribe();
+    
   }
   createUser(): void {
     let newUser: User = new User(undefined!, this.userId);
     this.charService.createUser(newUser).subscribe();
   }
   showAllFavorites(): void {
-    this.dndService.showFavorites().subscribe((allTickets) => {
-      this.favorites = allTickets;
+    this.dndService.showFavorites().subscribe((allFavorites) => {
+      this.favorites = allFavorites;
     });
   }
   createFavorite(characterId: number): void{
@@ -81,6 +74,42 @@ export class MainViewComponent implements OnInit {
     }
 return false;
   }
+
+
+  searchForFavorites(): void {
+    let newSearched: Character[] = [];
+
+    newSearched = this.searchedCharacters.filter(character => 
+      this.isFavorited(character.pkId),
+      
+    );
+    console.log(newSearched)
+    this.searchedCharacters = newSearched;
+  }
+  GetCharacterByName(name: string){
+   let searchByFaves: any = document.getElementById("favSearchCheckBox") ?? false;
+   this.charService.GetCharacterByName(name).subscribe((response) => {
+    this.searchedCharacters = response;
+    console.log(name);
+    if(searchByFaves.checked){
+      this.searchForFavorites();
+
+    }
+
+   })
+  }
+  
+  deleteCharacter(id: number){
+    let toDelete: Character = this.searchedCharacters.find(character => character.pkId == id)!;
+    this.charService.deleteCharacter(id).subscribe(() => {
+      this.searchedCharacters.splice(this.searchedCharacters.indexOf(toDelete), 1);
+    })
+  }
+  updateCharacter(character: Character){
+    this.charService.character = character;
+    this.router.navigateByUrl(`/view-preset`)
+  }
+
 
 
   login(): void {
