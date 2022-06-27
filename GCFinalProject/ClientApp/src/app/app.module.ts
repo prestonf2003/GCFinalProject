@@ -14,7 +14,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { ViewPresetComponent } from './view-preset/view-preset.component';
 import { SpellListComponent } from './spell-list/spell-list.component';
-
+import { CartoonCharComponent } from '../cartoon-char/cartoon-char.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { SpellListComponent } from './spell-list/spell-list.component';
     MainViewComponent,
     CreateCharacterComponent,
     ViewPresetComponent,
-    SpellListComponent
+    SpellListComponent,
+    CartoonCharComponent
     
   ],
   imports: [
@@ -40,7 +41,8 @@ import { SpellListComponent } from './spell-list/spell-list.component';
       { path: 'showclass', component: ShowclassComponent },
       {path: 'create-character', component: CreateCharacterComponent},
       {path: 'view-preset', component: ViewPresetComponent},
-      {path: 'spell-list', component: SpellListComponent}
+      {path: 'spell-list', component: SpellListComponent},
+      { path:'Cartoon-Combatents', component: CartoonCharComponent}
 
     ])
   ],
