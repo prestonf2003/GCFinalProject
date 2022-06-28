@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CharacterService } from '../character.service';
 import { CartoonChar } from '../CartoonChar';
 import { ToonServiceService } from '../toon-service.service';
 @Component({
@@ -8,9 +8,11 @@ import { ToonServiceService } from '../toon-service.service';
   styleUrls: ['./cartoon-char.component.css']
 })
 export class CartoonCharComponent implements OnInit {
+  currentUser = this.charService.currentUser;
   searchedToons:CartoonChar[]= [];
+  userId: string = "";
 
-  constructor(public toonService: ToonServiceService) 
+  constructor(public toonService: ToonServiceService, public charService: CharacterService) 
   {
     this.toonService.showAllCartoonCharacters().subscribe((result) => {
       this.searchedToons = result;
@@ -20,6 +22,8 @@ export class CartoonCharComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser = this.charService.currentUser;
+    this.userId = '';
   }
 
 }
