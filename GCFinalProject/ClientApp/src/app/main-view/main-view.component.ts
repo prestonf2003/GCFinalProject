@@ -30,8 +30,7 @@ export class MainViewComponent implements OnInit {
 
   userId: string = "";
 
-  constructor(public charService: CharacterService, public dndService: DndService, private router: Router) 
-  {
+  constructor(public charService: CharacterService, public dndService: DndService, private router: Router) {
     this.charService.showAllCharacters().subscribe((result) => {
       this.searchedCharacters = result;
       console.log(this.searchedCharacters);
@@ -39,10 +38,7 @@ export class MainViewComponent implements OnInit {
     this.showAllFavorites();
   }
   createCharacter(): void {
-this.router.navigateByUrl(`/create-character`);
-    
-
-    
+    this.router.navigateByUrl(`/create-character`);
   }
   createUser(): void {
     let newUser: User = new User(undefined!, this.userId);
@@ -53,59 +49,59 @@ this.router.navigateByUrl(`/create-character`);
       this.favorites = allFavorites;
     });
   }
-  createFavorite(characterId: number): void{
+  createFavorite(characterId: number): void {
     this.newFavorite = new Favorite(undefined!, this.charService.currentUser, characterId);
 
     this.dndService.createFavorite(this.newFavorite).subscribe(() => {
       this.showAllFavorites();
     });
   }
-  deleteFavorite(characterId: number): void{
+  deleteFavorite(characterId: number): void {
     let foundFav: Favorite = this.favorites.find(favorite => favorite.id === characterId && favorite.userId === this.charService.currentUser)!;
     this.dndService.deleteFavorite(foundFav.pkId).subscribe(() => {
       this.favorites.splice(this.favorites.indexOf(foundFav), 1);
     });
   }
-  isFavorited(characterId: number): boolean{
-    for (let i = 0; i < this.favorites.length; i++){
-      if(this.favorites[i].id == characterId && this.favorites[i].userId === this.charService.currentUser){
+  isFavorited(characterId: number): boolean {
+    for (let i = 0; i < this.favorites.length; i++) {
+      if (this.favorites[i].id == characterId && this.favorites[i].userId === this.charService.currentUser) {
         return true;
       }
     }
-return false;
+    return false;
   }
 
 
   searchForFavorites(): void {
     let newSearched: Character[] = [];
 
-    newSearched = this.searchedCharacters.filter(character => 
+    newSearched = this.searchedCharacters.filter(character =>
       this.isFavorited(character.pkId),
-      
+
     );
     console.log(newSearched)
     this.searchedCharacters = newSearched;
   }
-  GetCharacterByName(name: string){
-   let searchByFaves: any = document.getElementById("favSearchCheckBox") ?? false;
-   this.charService.GetCharacterByName(name).subscribe((response) => {
-    this.searchedCharacters = response;
-    console.log(name);
-    if(searchByFaves.checked){
-      this.searchForFavorites();
+  GetCharacterByName(name: string) {
+    let searchByFaves: any = document.getElementById("favSearchCheckBox") ?? false;
+    this.charService.GetCharacterByName(name).subscribe((response) => {
+      this.searchedCharacters = response;
+      console.log(name);
+      if (searchByFaves.checked) {
+        this.searchForFavorites();
 
-    }
+      }
 
-   })
+    })
   }
-  
-  deleteCharacter(id: number){
+
+  deleteCharacter(id: number) {
     let toDelete: Character = this.searchedCharacters.find(character => character.pkId == id)!;
     this.charService.deleteCharacter(id).subscribe(() => {
       this.searchedCharacters.splice(this.searchedCharacters.indexOf(toDelete), 1);
     })
   }
-  updateCharacter(character: Character){
+  updateCharacter(character: Character) {
     this.charService.character = character;
     this.router.navigateByUrl(`/view-preset`)
   }

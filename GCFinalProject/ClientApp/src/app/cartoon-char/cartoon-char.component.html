@@ -1,3 +1,19 @@
+<div *ngIf="currentUser === ''">
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">
+      Login
+    </button>
+  </div>
+  <span *ngIf="currentUser !== ''">
+    <br>
+    Logged in as: {{currentUser}}
+    <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>
+    <br>
+  
+  
+    <br>
+  </span>
+
 <div *ngFor="let c of searchedToons">
     Name: {{c.name}} &nbsp; Heavy Attack: {{c.heavyAttack}} &nbsp; Light Attack: {{c.lightAttack}} &nbsp;
 
