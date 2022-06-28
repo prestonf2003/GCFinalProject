@@ -15,6 +15,7 @@ import { CreateCharacterComponent } from './create-character/create-character.co
 import { ViewPresetComponent } from './view-preset/view-preset.component';
 import { SpellListComponent } from './spell-list/spell-list.component';
 import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
     ViewPresetComponent,
     SpellListComponent,
     CartoonCharComponent
-    
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,10 +40,10 @@ import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'showclass', component: ShowclassComponent },
-      {path: 'create-character', component: CreateCharacterComponent},
-      {path: 'view-preset', component: ViewPresetComponent},
-      {path: 'spell-list', component: SpellListComponent},
-      { path:'Cartoon-Combatents', component: CartoonCharComponent}
+      { path: 'create-character', component: CreateCharacterComponent },
+      { path: 'view-preset', component: ViewPresetComponent },
+      { path: 'spell-list', component: SpellListComponent },
+      { path: 'Cartoon-Combatants', component: CartoonCharComponent }
 
     ])
   ],
