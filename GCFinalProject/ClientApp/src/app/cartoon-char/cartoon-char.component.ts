@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CartoonChar } from '../app/CartoonChar';
+import { CartoonChar } from '../CartoonChar';
 import { ToonServiceService } from '../toon-service.service';
 @Component({
   selector: 'app-cartoon-char',

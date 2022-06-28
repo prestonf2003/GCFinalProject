@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GCFinalProject.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CartoonController : Controller
     {
         DnDContext db = new DnDContext();
         [HttpGet("ShowAllCartoonCharacters")]
-        public List <CartoonChar> ShowAllCartoonCharacters()
+        public List<CartoonChar> ShowAllCartoonCharacters()
         {
             return db.CartoonChars.ToList();
 

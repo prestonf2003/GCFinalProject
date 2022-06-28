@@ -11,7 +11,7 @@ const PROXY_CONFIG = [
       "/user",
       "/character",
       "/favorite",
-"/toon"
+"/cartoon"
 
    ],
     target: target,

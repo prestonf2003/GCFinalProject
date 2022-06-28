@@ -14,7 +14,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { ViewPresetComponent } from './view-preset/view-preset.component';
 import { SpellListComponent } from './spell-list/spell-list.component';
-import { CartoonCharComponent } from '../cartoon-char/cartoon-char.component';
+import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
 @NgModule({
   declarations: [
     AppComponent,
