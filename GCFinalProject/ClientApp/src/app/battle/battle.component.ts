@@ -128,9 +128,8 @@ export class BattleComponent implements OnInit {
   }
   async BattleItOut() {
     this.userHealth = 50;
-    this.cartoonHealth = 60;
+    this.cartoonHealth = 50;
     let defeated: boolean = false;
-    
 
     while (defeated === false) {
       let Cartoonattack = this.getCartoonAttack();
@@ -144,9 +143,6 @@ export class BattleComponent implements OnInit {
           this.CartoonPhrase = this.Shaggy[2];
         }
       }
-      
- 
-      
       if (this.cartSearch === 'Scooby') {
         if (Cartoonattack <= 5) {
           this.CartoonPhrase = this.Scooby[0];

@@ -1,6 +1,11 @@
 <div *ngIf="currentUser === ''">
-    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
-    <button (click)="charService.login(userId); ngOnInit()">Login</button>
+  <input
+    type="text"
+    id="username"
+    placeholder="Username"
+    [(ngModel)]="userId"
+  />
+  <button (click)="charService.login(userId); ngOnInit()">Login</button>
 </div>
 <span *ngIf="currentUser !== ''">
   <br />
@@ -11,34 +16,41 @@
 
   <br />
   <br />
-</span> {{ cartSearch }} {{ favSearch }}
+</span>
+{{ cartSearch }} {{ favSearch }}
 <p>
-    User Health:{{ userHealth }} User Attack:{{ attack_user }} &nbsp; &nbsp; Cartoon Health:{{ cartoonHealth }}
+  User Health:{{ userHealth }} User Attack:{{ attack_user }} &nbsp; &nbsp;
+  Cartoon Health:{{ cartoonHealth }}
 </p>
 
 <div class="hp">
-    <p>Player Health: {{ userHealth }}</p>
-    <div class="gage">
-        <div class="bar">
-            <span id="health" class="lvl" style="width:  {{userHealth / 50  * 95}}%"></span
-      >
+  <p>Player Health: {{ userHealth }}</p>
+  <div class="gage">
+    <div class="bar">
+      <span
+        id="health"
+        class="lvl"
+        style="width:  {{ (userHealth / 50) * 100 }}%"
+      ></span>
     </div>
     <p>Cartoon's Health: {{ cartoonHealth }}</p>
     <div class="bar">
-      
-      <span id="health2" class="lvl" style="width: {{cartoonHealth / 50 * 100 }}%">
-        </span
+      <span
+        id="health2"
+        class="lvl"
+        style="width: {{ (cartoonHealth / 50) * 100 }}%"
       >
+      </span>
     </div>
   </div>
   <!-- <div class="click">
         <span class="btn-3d green" onclick="add()">Health</span>
             <span class="btn-3d red" onclick="remove()">Damage</span>
         </div> -->
-
-    </div>
-    <strong><p>Cartoon Attack:{{ attack_cartoon }} {{ CartoonPhrase }}</p></strong
+</div>
+<strong
+  ><p>Cartoon Attack:{{ attack_cartoon }} {{ CartoonPhrase }}</p></strong
 >
-    <p>{{ Victory }}</p>
+<p>{{ Victory }}</p>
 
-    <button (click)="BattleItOut()">Battle</button>
+<button (click)="BattleItOut()">Battle</button>
