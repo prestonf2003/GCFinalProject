@@ -9,12 +9,16 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 import { ShowclassComponent } from './showclass/showclass.component';
 import { MainViewComponent } from './main-view/main-view.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { ViewPresetComponent } from './view-preset/view-preset.component';
 import { SpellListComponent } from './spell-list/spell-list.component';
 import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
+import { BattleComponent } from './battle/battle.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +31,8 @@ import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
     CreateCharacterComponent,
     ViewPresetComponent,
     SpellListComponent,
-    CartoonCharComponent
-    
+    CartoonCharComponent,
+    BattleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,10 +43,11 @@ import { CartoonCharComponent } from './cartoon-char/cartoon-char.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'showclass', component: ShowclassComponent },
-      {path: 'create-character', component: CreateCharacterComponent},
-      {path: 'view-preset', component: ViewPresetComponent},
-      {path: 'spell-list', component: SpellListComponent},
-      { path:'Cartoon-Combatents', component: CartoonCharComponent}
+      { path: 'create-character', component: CreateCharacterComponent },
+      { path: 'view-preset', component: ViewPresetComponent },
+      { path: 'spell-list', component: SpellListComponent },
+      { path: 'Cartoon-Combatants', component: CartoonCharComponent },
+      { path: 'battle', component: BattleComponent}
 
     ])
   ],
