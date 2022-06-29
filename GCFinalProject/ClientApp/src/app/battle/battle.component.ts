@@ -168,7 +168,7 @@ export class BattleComponent implements OnInit {
 
       this.cartoonHealth = this.cartoonHealth - Userattack;
 
-      await this.delay(1000);
+      
       if (this.userHealth <= 0) {
         if (this.userHealth < 0) {
           this.userHealth = 0;
@@ -184,6 +184,7 @@ export class BattleComponent implements OnInit {
           'Congratulations!' + this.currentUser + 'You beat' + this.cartSearch;
         defeated = true;
       }
+      await this.delay(1000);
     }
   }
 
