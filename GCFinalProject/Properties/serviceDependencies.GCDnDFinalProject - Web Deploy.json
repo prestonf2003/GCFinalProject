@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": null,
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:Server=tcp:gcfinalproject.database.windows.net,1433;InitialCatalog=DnD;PersistSecurityInfo=False;UserID=GCFinal;Password=RyanPrestonL0ganAdam;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;ConnectionTimeout=30;",
+      "dynamicId": null
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div *ngIf="currentUser === ''">
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">
+    Login
+  </button>
+</div>
+<span *ngIf="currentUser !== ''">
+    <br>
+    Logged in as: {{currentUser}}
+    <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>    
+    <br>
+
+<div *ngIf="currentUser !== ''">
+    <label for="classes">Select a class:</label>
+
+    <select [(ngModel)]="class">
+<option value="default">----</option>
+<option *ngFor="let character of characters">{{ character }}</option>
+</select>
+    <br>
+    <label for="subclasses">Select a subclass: </label>
+    <select [(ngModel)]="subclass">
+    <option value="default">----</option>
+    <option *ngFor="let subclass of subclasses">{{ subclass }}</option>
+    </select>
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="strength" placeholder="Strength">
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="dexterity" placeholder="Dexterity">
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="constitution" placeholder="Constitution">
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="intelligence" placeholder="Intelligence">
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="wisdom" placeholder="Wisdom">
+    <br>
+    <input type="number" min="0" max="20" [(ngModel)]="charisma" placeholder="Charisma">
+    <br>
+    <button (click)="createNewCharacter()">Create</button>
+</div>

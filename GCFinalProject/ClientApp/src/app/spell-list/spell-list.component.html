@@ -1,0 +1,9 @@
+<input type="text" name="name" placeholder="Search Spells by Name" [(ngModel)]="name" (keyup)="SearchSpells(name)">
+
+
+<div *ngFor="let spells of searchedSpells">
+
+
+    {{spells}}
+
+</div>
