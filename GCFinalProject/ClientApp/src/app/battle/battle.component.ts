@@ -6,7 +6,6 @@ import { CharacterService } from '../character.service';
 import { Favorite } from '../favorite';
 import { DndService } from '../dnd.service';
 import { CartoonCharComponent } from '../cartoon-char/cartoon-char.component';
-import { SelectComponent } from 'ng-uikit-pro-standard';
 import { ThisReceiver } from '@angular/compiler';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
@@ -23,13 +22,25 @@ export class BattleComponent implements OnInit {
   newFavorite: Favorite = new Favorite(-1, 'user here', -1);
   userId: string = '';
   userHealth: number = 50;
-  cartoonHealth: number = 60;
+  cartoonHealth: number = 50;
   attack_user: number = 0;
   attack_cartoon: number = 0;
   Victory: string = '';
-  Shaggy: string[] = ["Shaggy Uses Slap", "Shaggy Uses Roundhouse", "Shaggy Goes Ultra Instinct"];
-  Spongebob: string[] = ["Spongebob uses Spatula Slap", "Spongebob uses Karate Chop", "Spongebob uses WUMBO COMBO"];
-  Scooby: string[] = ["Scooby uses Scooby Snack Throw", "Scooby uses Sandwhich Smack", "Scooby uses Jump Scare"];
+  Shaggy: string[] = [
+    'Shaggy Uses Slap',
+    'Shaggy Uses Roundhouse',
+    'Shaggy Goes Ultra Instinct',
+  ];
+  Spongebob: string[] = [
+    'Spongebob uses Spatula Slap',
+    'Spongebob uses Karate Chop',
+    'Spongebob uses WUMBO COMBO',
+  ];
+  Scooby: string[] = [
+    'Scooby uses Scooby Snack Throw',
+    'Scooby uses Sandwhich Smack',
+    'Scooby uses Jump Scare',
+  ];
   CartoonPhrase: string = '';
   // currentToon = this.cartoonChar.cartSearch;
   // currentFavorite = this.cartoonChar.favSearch;
@@ -106,85 +117,76 @@ export class BattleComponent implements OnInit {
       this.favorites.splice(this.favorites.indexOf(foundFav), 1);
     });
   }
-  getCartoonAttack(){
-    return Math.floor(Math.random() * (20 -1)) + 1;
+  getCartoonAttack() {
+    return Math.floor(Math.random() * (20 - 1)) + 1;
   }
-  getUserAttack(){
-    return Math.floor(Math.random() * (10 -1)) + 1;
+  getUserAttack() {
+    return Math.floor(Math.random() * (10 - 1)) + 1;
   }
-   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-  async BattleItOut(){
+  delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  async BattleItOut() {
     this.userHealth = 50;
-    this.cartoonHealth = 60;
+    this.cartoonHealth = 50;
     let defeated: boolean = false;
-    
-    while(defeated === false){
-  
 
-    let Cartoonattack = this.getCartoonAttack();
-    this.attack_cartoon = Cartoonattack;
-    if(this.cartSearch === "Shaggy"){
-      if(Cartoonattack <= 5){
-        this.CartoonPhrase = this.Shaggy[0];
+    while (defeated === false) {
+      let Cartoonattack = this.getCartoonAttack();
+      this.attack_cartoon = Cartoonattack;
+      if (this.cartSearch === 'Shaggy') {
+        if (Cartoonattack <= 5) {
+          this.CartoonPhrase = this.Shaggy[0];
+        } else if (Cartoonattack <= 10 && Cartoonattack > 5) {
+          this.CartoonPhrase = this.Shaggy[1];
+        } else {
+          this.CartoonPhrase = this.Shaggy[2];
+        }
       }
-      else if(Cartoonattack <= 10 && Cartoonattack > 5){
-        this.CartoonPhrase = this.Shaggy[1];
+      if (this.cartSearch === 'Scooby') {
+        if (Cartoonattack <= 5) {
+          this.CartoonPhrase = this.Scooby[0];
+        } else if (Cartoonattack <= 10 && Cartoonattack > 5) {
+          this.CartoonPhrase = this.Scooby[1];
+        } else {
+          this.CartoonPhrase = this.Scooby[2];
+        }
       }
-      else{
-        this.CartoonPhrase = this.Shaggy[2];
+      if (this.cartSearch === 'Spongebob') {
+        if (Cartoonattack <= 5) {
+          this.CartoonPhrase = this.Spongebob[0];
+        } else if (Cartoonattack <= 10 && Cartoonattack > 5) {
+          this.CartoonPhrase = this.Spongebob[1];
+        } else {
+          this.CartoonPhrase = this.Spongebob[2];
+        }
       }
-    }
-    if(this.cartSearch === "Scooby"){
-      if(Cartoonattack <= 5){
-        this.CartoonPhrase = this.Scooby[0];
-      }
-      else if(Cartoonattack <= 10 && Cartoonattack > 5){
-        this.CartoonPhrase = this.Scooby[1];
-      }
-      else{
-        this.CartoonPhrase = this.Scooby[2];
-      }
-    }
-    if(this.cartSearch === "Spongebob"){
-      if(Cartoonattack <= 5){
-        this.CartoonPhrase = this.Spongebob[0];
-      }
-      else if(Cartoonattack <= 10 && Cartoonattack > 5){
-        this.CartoonPhrase = this.Spongebob[1];
-      }
-      else{
-        this.CartoonPhrase = this.Spongebob[2];
-      }
-    }
-    this.userHealth = this.userHealth - Cartoonattack;
+      this.userHealth = this.userHealth - Cartoonattack;
 
-    let Userattack = this.getUserAttack();
-    this.attack_user = Userattack;
+      let Userattack = this.getUserAttack();
+      this.attack_user = Userattack;
 
-    this.cartoonHealth = this.cartoonHealth - Userattack;
+      this.cartoonHealth = this.cartoonHealth - Userattack;
 
-    await this.delay(1000);
-    if(this.userHealth <= 0){
-      if(this.userHealth < 0){
-        this.userHealth = 0;
+      await this.delay(1000);
+      if (this.userHealth <= 0) {
+        if (this.userHealth < 0) {
+          this.userHealth = 0;
+        }
+        this.Victory = 'You Got smacked by ' + this.cartSearch;
+        defeated = true;
       }
-      this.Victory ="You Got smacked by " + this.cartSearch;
-      defeated = true;
-    }
-    if(this.cartoonHealth <= 0){
-      if(this.cartoonHealth < 0){
-        this.cartoonHealth = 0;
+      if (this.cartoonHealth <= 0) {
+        if (this.cartoonHealth < 0) {
+          this.cartoonHealth = 0;
+        }
+        this.Victory =
+          'Congratulations!' + this.currentUser + 'You beat' + this.cartSearch;
+        defeated = true;
       }
-      this.Victory ="Congratulations!" + this.currentUser +"You beat" + this.cartSearch;
-      defeated = true;
     }
-  
   }
 
-
-  }
   ngOnInit(): void {
     this.currentUser = this.charService.currentUser;
     this.userId = '';

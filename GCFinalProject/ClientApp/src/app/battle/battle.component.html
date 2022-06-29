@@ -1,3 +1,4 @@
+
 <div class="center, search-results">
 
   <div *ngIf="currentUser === ''">
@@ -21,6 +22,26 @@
   <p>
     User Health:{{userHealth}} User Attack:{{attack_user}} &nbsp; &nbsp; Cartoon Health:{{cartoonHealth}}
   </p>
+  <div class="hp">
+  <p>Player Health: {{ userHealth }}</p>
+  <div class="gage">
+    <div class="bar">
+      <span
+        id="health"
+        class="lvl"
+        style="width:  {{ (userHealth / 50) * 100 }}%"
+      ></span>
+    </div>
+    <p>Cartoon's Health: {{ cartoonHealth }}</p>
+    <div class="bar">
+      <span
+        id="health2"
+        class="lvl"
+        style="width: {{ (cartoonHealth / 50) * 100 }}%"
+      >
+      </span>
+    </div>
+  </div>
   <strong>
     <p>Cartoon Attack:{{attack_cartoon}} {{CartoonPhrase}}</p>
   </strong>
