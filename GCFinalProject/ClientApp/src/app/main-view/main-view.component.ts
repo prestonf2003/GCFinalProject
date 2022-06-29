@@ -87,7 +87,7 @@ export class MainViewComponent implements OnInit {
     this.charService.GetCharacterByName(name).subscribe((response) => {
       this.searchedCharacters = response;
       console.log(name);
-      if (searchByFaves.checked) {
+      if (!searchByFaves.checked) {
         this.searchForFavorites();
 
       }
