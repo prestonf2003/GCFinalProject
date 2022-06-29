@@ -1,6 +1,11 @@
 <div *ngIf="currentUser === ''">
-    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
-    <button (click)="charService.login(userId); ngOnInit()">Login</button>
+  <input
+    type="text"
+    id="username"
+    placeholder="Username"
+    [(ngModel)]="userId"
+  />
+  <button (click)="charService.login(userId); ngOnInit()">Login</button>
 </div>
 <span *ngIf="currentUser !== ''">
   <br />
@@ -8,14 +13,36 @@
   <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">
     Logout
   </button>
-  
+
   <br />
   <br />
-</span> {{cartSearch}} {{favSearch}}
+</span>
+{{ cartSearch }} {{ favSearch }}
 <p>
-    User Health:{{userHealth}} User Attack:{{attack_user}} &nbsp; &nbsp; Cartoon Health:{{cartoonHealth}}
+  User Health:{{ userHealth }} User Attack:{{ attack_user }} &nbsp; &nbsp;
+  Cartoon Health:{{ cartoonHealth }}
 </p>
-<strong><p>Cartoon Attack:{{attack_cartoon}} {{CartoonPhrase}}</p></strong>
-<p>{{Victory}}</p>
+<div class="hp">
+  <div class="gage">
+    <div class="bar">
+      <span id="health" class="lvl" style="width: 100%"
+        >Player Health: {{ userHealth }}</span
+      >
+    </div>
+    <div class="bar2">
+      <span id="health2" class="lvl" style="width: 100%"
+        >Cartoon's Health: {{ cartoonHealth }}</span
+      >
+    </div>
+  </div>
+  <!-- <div class="click">
+        <span class="btn-3d green" onclick="add()">Health</span>
+        <span class="btn-3d red" onclick="remove()">Damage</span>
+      </div> -->
+</div>
+<strong
+  ><p>Cartoon Attack:{{ attack_cartoon }} {{ CartoonPhrase }}</p></strong
+>
+<p>{{ Victory }}</p>
 
 <button (click)="BattleItOut()">Battle</button>
