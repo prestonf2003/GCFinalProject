@@ -5,6 +5,7 @@ import { ToonServiceService } from '../toon-service.service';
 import { Favorite } from '../favorite';
 import { Character } from '../character';
 import { DndService } from '../dnd.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cartoon-char',
   templateUrl: './cartoon-char.component.html',
@@ -19,23 +20,30 @@ export class CartoonCharComponent implements OnInit {
   name: string = '';
   newFavorite: Favorite = new Favorite(-1, 'user here', -1);
 
-  favSearch: string = ''.toLowerCase();
-  cartSearch: string = ''.toLowerCase();
+  favSearch: string = this.toonService.favSearch;
+  cartSearch: string = this.toonService.cartSearch;
 
   constructor(
     public toonService: ToonServiceService,
     public charService: CharacterService,
-    public dndService: DndService
+    public dndService: DndService,
+    private router: Router
   ) {
     this.charService.showAllCharacters().subscribe((result) => {
       this.searchedCharacters = result;
       console.log(this.searchedCharacters);
     });
     this.showAllFavorites();
+    this.showAllCartoonCharacters();
   }
   showAllFavorites(): void {
     this.dndService.showFavorites().subscribe((allFavorites) => {
       this.favorites = allFavorites;
+    });
+  }
+  showAllCartoonCharacters(): void{
+    this.toonService.showAllCartoonCharacters().subscribe((result) =>{
+      this.searchedToons = result;
     });
   }
   GetCharacterByName(name: string) {
@@ -93,9 +101,20 @@ export class CartoonCharComponent implements OnInit {
       this.favorites.splice(this.favorites.indexOf(foundFav), 1);
     });
   }
+  battle(cartoon: string, character: string): void{
+    this.toonService.cartSearch = cartoon;
+    this.toonService.favSearch = character;
+    this.router.navigateByUrl('/battle');
+
+
+
+  }
   ngOnInit(): void {
     this.currentUser = this.charService.currentUser;
     this.userId = '';
     this.GetCharacterByName('');
+    this.favSearch = this.toonService.favSearch;
+    this.cartSearch = this.toonService.cartSearch;
   }
+
 }

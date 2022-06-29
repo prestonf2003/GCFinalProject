@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class ToonServiceService {
   urlRoot: string;
+  favSearch: string = '';
+  cartSearch: string = ''
   headers = new HttpHeaders().set(
     'Content-Type',
     'application/json; charset=utf-8'

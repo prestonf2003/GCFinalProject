@@ -6,6 +6,7 @@ import { CharacterService } from '../character.service';
 import { Favorite } from '../favorite';
 import { DndService } from '../dnd.service';
 import { CartoonCharComponent } from '../cartoon-char/cartoon-char.component';
+import { SelectComponent } from 'ng-uikit-pro-standard';
 
 @Component({
   selector: 'app-battle',
@@ -19,14 +20,20 @@ export class BattleComponent implements OnInit {
   name: string = '';
   newFavorite: Favorite = new Favorite(-1, 'user here', -1);
   userId: string = '';
+  userHealth: number = 20;
+  cartoonHealth: number = 25;
+  attack_user: number = 0;
+  attack_cartoon: number = 0;
+  Victory: string = '';
 
   // currentToon = this.cartoonChar.cartSearch;
   // currentFavorite = this.cartoonChar.favSearch;
-
+  favSearch: string = this.toonService.favSearch;
+  cartSearch: string = this.toonService.cartSearch;
   constructor(
     public dndService: DndService,
     public charService: CharacterService,
-    public cartoonChar: CartoonCharComponent
+    public toonService: ToonServiceService
   ) {
     this.charService.showAllCharacters().subscribe((result) => {
       this.searchedCharacters = result;
@@ -94,9 +101,58 @@ export class BattleComponent implements OnInit {
       this.favorites.splice(this.favorites.indexOf(foundFav), 1);
     });
   }
+  getCartoonAttack(){
+    return Math.floor(Math.random() * (10 -1)) + 1;
+  }
+  getUserAttack(){
+    return Math.floor(Math.random() * (10 -1)) + 1;
+  }
+   delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+  async BattleItOut(){
+    this.userHealth = 20;
+    this.cartoonHealth = 25;
+    let defeated: boolean = false;
+    
+    while(defeated === false){
+  
+
+    let Cartoonattack = this.getCartoonAttack();
+    this.attack_cartoon = Cartoonattack;
+
+    this.userHealth = this.userHealth - Cartoonattack;
+
+    let Userattack = this.getUserAttack();
+    this.attack_user = Userattack;
+
+    this.cartoonHealth = this.cartoonHealth - Userattack;
+
+    await this.delay(1000);
+    if(this.userHealth <= 0){
+      if(this.userHealth < 0){
+        this.userHealth = 0;
+      }
+      this.Victory ="You Got smacked by " + this.cartSearch;
+      defeated = true;
+    }
+    if(this.cartoonHealth <= 0){
+      if(this.cartoonHealth < 0){
+        this.cartoonHealth = 0;
+      }
+      this.Victory ="Congratulations!" + this.currentUser +"You beat" + this.cartSearch;
+      defeated = true;
+    }
+  
+  }
+
+
+  }
   ngOnInit(): void {
     this.currentUser = this.charService.currentUser;
     this.userId = '';
     this.GetCharacterByName('');
+    this.favSearch = this.toonService.favSearch;
+    this.cartSearch = this.toonService.cartSearch;
   }
 }

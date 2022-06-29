@@ -1,11 +1,6 @@
 <div *ngIf="currentUser === ''">
-  <input
-    type="text"
-    id="username"
-    placeholder="Username"
-    [(ngModel)]="userId"
-  />
-  <button (click)="charService.login(userId); ngOnInit()">Login</button>
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">Login</button>
 </div>
 <span *ngIf="currentUser !== ''">
   <br />
@@ -13,44 +8,14 @@
   <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">
     Logout
   </button>
+  
   <br />
   <br />
-</span>
+</span> {{cartSearch}} {{favSearch}}
+<p>
+    User Health:{{userHealth}} User Attack:{{attack_user}} &nbsp; &nbsp; Cartoon Health:{{cartoonHealth}} Cartoon Attack:{{attack_cartoon}}
 
-<div *ngIf="currentUser !== ''">
-  <label hidden
-    >Show only favorites:
-    <input
-      type="checkbox"
-      id="favSearchCheckBox"
-      value="favoritesOnly"
-      (click)="GetCharacterByName(name)"
-    />favoritesOnly</label
-  >
-  <div *ngFor="let c of searchedCharacters">
-    <strong>
-      <p>Class: {{ c.class }}&nbsp; &nbsp; SubClass: {{ c.subclass }}</p>
-    </strong>
-    <!-- <p id="stats" style="display:none">{{c.charisma}}</p> -->
 
-    <button
-      class="buttonStyle"
-      *ngIf="currentUser !== '' && !isFavorited(c.pkId)"
-      (click)="createFavorite(c.pkId)"
-    >
-      Favorite
-    </button>
-    <button
-      class="buttonStyle"
-      *ngIf="currentUser !== '' && isFavorited(c.pkId)"
-      (click)="deleteFavorite(c.pkId)"
-    >
-      Remove from favorites
-    </button>
-  </div>
-  <!-- <h1>{{ currentFavorite }}, {{ currentToon }}</h1> -->
-  <h1>test</h1>
-  <div *ngfor="let s of favorites">
-    {{ s.id }}
-  </div>
-</div>
+</p>
+<p>{{Victory}}</p>
+<button (click)="BattleItOut()">Battle</button>

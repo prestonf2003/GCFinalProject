@@ -1,11 +1,6 @@
 <div *ngIf="currentUser === ''">
-  <input
-    type="text"
-    id="username"
-    placeholder="Username"
-    [(ngModel)]="userId"
-  />
-  <button (click)="charService.login(userId); ngOnInit()">Login</button>
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">Login</button>
 </div>
 <span *ngIf="currentUser !== ''">
   <br />
@@ -31,7 +26,7 @@
     <option value="default">----</option>
     <option *ngFor="let s of searchedCharacters">{{ s.class }}</option>
   </select>
-
+<button (click)="battle(cartSearch, favSearch); ngOnInit()">Battle</button>
   <br />
 
   <!-- <div *ngFor="let c of searchedToons">
