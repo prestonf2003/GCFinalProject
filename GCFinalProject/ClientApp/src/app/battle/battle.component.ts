@@ -20,7 +20,13 @@ export class BattleComponent implements OnInit {
   newFavorite: Favorite = new Favorite(-1, "user here", -1);
   userId: string = "";
 
-  constructor( public dndService: DndService, public charService: CharacterService) { }
+  constructor( public dndService: DndService, public charService: CharacterService) {
+    this.charService.showAllCharacters().subscribe((result) => {
+      this.searchedCharacters = result;
+      console.log(this.searchedCharacters);
+    });
+    this.showAllFavorites();
+   }
   showAllFavorites(): void {
     this.dndService.showFavorites().subscribe((allFavorites) => {
       this.favorites = allFavorites;
@@ -33,7 +39,9 @@ export class BattleComponent implements OnInit {
     this.charService.GetCharacterByName(name).subscribe((response) => {
       this.searchedCharacters = response;
       console.log(this.searchedCharacters);
-      if (searchByFaves.checked) {
+      console.log(this.currentUser)
+      
+      if (!searchByFaves.checked) {
         this.searchForFavorites();
 
       }
