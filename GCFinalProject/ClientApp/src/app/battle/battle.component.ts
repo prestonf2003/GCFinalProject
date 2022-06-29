@@ -22,7 +22,7 @@ export class BattleComponent implements OnInit {
   newFavorite: Favorite = new Favorite(-1, 'user here', -1);
   userId: string = '';
   userHealth: number = 50;
-  cartoonHealth: number = 60;
+  cartoonHealth: number = 50;
   attack_user: number = 0;
   attack_cartoon: number = 0;
   Victory: string = '';
@@ -130,6 +130,7 @@ export class BattleComponent implements OnInit {
     this.userHealth = 50;
     this.cartoonHealth = 60;
     let defeated: boolean = false;
+    
 
     while (defeated === false) {
       let Cartoonattack = this.getCartoonAttack();
@@ -143,6 +144,9 @@ export class BattleComponent implements OnInit {
           this.CartoonPhrase = this.Shaggy[2];
         }
       }
+      
+ 
+      
       if (this.cartSearch === 'Scooby') {
         if (Cartoonattack <= 5) {
           this.CartoonPhrase = this.Scooby[0];
