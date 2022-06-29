@@ -1,0 +1,21 @@
+<div *ngIf="currentUser === ''">
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">Login</button>
+</div>
+<span *ngIf="currentUser !== ''">
+  <br />
+  Logged in as: {{ currentUser }}
+  <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">
+    Logout
+  </button>
+  
+  <br />
+  <br />
+</span> {{cartSearch}} {{favSearch}}
+<p>
+    User Health:{{userHealth}} User Attack:{{attack_user}} &nbsp; &nbsp; Cartoon Health:{{cartoonHealth}} Cartoon Attack:{{attack_cartoon}}
+
+
+</p>
+<p>{{Victory}}</p>
+<button (click)="BattleItOut()">Battle</button>
