@@ -1,24 +1,28 @@
-<div *ngIf="currentUser === ''">
-  <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
-  <button (click)="charService.login(userId); ngOnInit()">
-    Login
-  </button>
-</div>
-<span *ngIf="currentUser !== ''">
-  <br>
-  Logged in as: {{currentUser}}
-  <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>
-  <br>
-  <br>
+<div class="center">
 
-</span>
+  <div *ngIf="currentUser === ''">
+    <input type="text" id="username" placeholder="Username" [(ngModel)]="userId" />
+    <button (click)="charService.login(userId); ngOnInit()">
+      Login
+    </button>
+  </div>
+
+  <span *ngIf="currentUser !== ''">
+    <br>
+    Logged in as: {{currentUser}}
+    <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>
+    <br>
+    <br>
+    
+  </span>
+</div>
 
 <div *ngIf="currentUser !== ''">
   <label>Show only favorites: <input type="checkbox" id="favSearchCheckBox" value="favoritesOnly"
       (click)="GetCharacterByName(name)">favoritesOnly</label>
   <br>
   <br>
-  <div *ngFor="let c of searchedCharacters">
+  <div class="search-results" *ngFor="let c of searchedCharacters">
     <strong>
       <p>Class: {{c.class}}&nbsp; &nbsp; SubClass: {{c.subclass}}</p>
     </strong>
