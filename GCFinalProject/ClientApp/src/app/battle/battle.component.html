@@ -1,0 +1,23 @@
+<div *ngIf="currentUser !== ''">
+    <label>Show only favorites: <input type="checkbox" id="favSearchCheckBox" value="favoritesOnly"
+            (click)="GetCharacterByName(name)">favoritesOnly</label>
+    <div *ngFor="let c of searchedCharacters">
+        <strong>
+            <p>Class: {{c.class}}&nbsp; &nbsp; SubClass: {{c.subclass}}</p>
+        </strong>
+        <!-- <p id="stats" style="display:none">{{c.charisma}}</p> -->
+
+        <button class="buttonStyle" *ngIf="currentUser !== '' && !isFavorited(c.pkId)"
+            (click)="createFavorite(c.pkId)">Favorite</button>
+        <button class="buttonStyle" *ngIf="currentUser !== '' && isFavorited(c.pkId)"
+            (click)="deleteFavorite(c.pkId)">Remove from favorites</button>
+    </div>
+    <h1>
+        This is stupid
+    </h1>
+    <div *ngfor="let s of favorites">
+{{s.id}}
+    </div>
+
+    
+</div> 

@@ -9,12 +9,22 @@
     Logged in as: {{currentUser}}
     <button class="buttonStyle" (click)="charService.logout(); ngOnInit()">Logout</button>
     <br>
+
+    <label for="classes">Select a cartoon to battle:</label>
+    <br/>
+    <br/>
+    <select [(ngModel)]="search">
+        <option value="default">----</option>
+        <option *ngFor="let c of searchedToons">{{c.name  }}</option>
+    </select>
+
+
   
   
     <br>
-  </span>
 
-<div *ngFor="let c of searchedToons">
+<!-- <div *ngFor="let c of searchedToons">
     Name: {{c.name}} &nbsp; Heavy Attack: {{c.heavyAttack}} &nbsp; Light Attack: {{c.lightAttack}} &nbsp;
 
-</div>
+</div> -->
+

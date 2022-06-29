@@ -12,6 +12,8 @@ export class CartoonCharComponent implements OnInit {
   searchedToons:CartoonChar[]= [];
   userId: string = "";
 
+  search: string = "".toLowerCase();
+
   constructor(public toonService: ToonServiceService, public charService: CharacterService) 
   {
     this.toonService.showAllCartoonCharacters().subscribe((result) => {
